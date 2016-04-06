@@ -14,7 +14,8 @@ var app = express();
 
 https.createServer({
       key: fs.readFileSync('key.pem'),
-      cert: fs.readFileSync('cert.pem')
+      cert: fs.readFileSync('cert.pem'),
+      passphrase: 'test'
     }, app).listen(3001);
 
 // view engine setup
