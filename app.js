@@ -4,19 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var https = require('https');
-var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-https.createServer({
-      key: fs.readFileSync('key.pem'),
-      cert: fs.readFileSync('cert.pem'),
-      passphrase: 'test'
-    }, app).listen(3001);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
