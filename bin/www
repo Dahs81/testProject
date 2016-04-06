@@ -26,7 +26,6 @@ app.set('port', port);
 var server = https.createServer({
       key: fs.readFileSync('key.pem'),
       cert: fs.readFileSync('cert.pem'),
-      passphrase: 'test'
     }, app);
 
 /**
@@ -63,6 +62,7 @@ function normalizePort(val) {
 
 function onError(error) {
   if (error.syscall !== 'listen') {
+    console.log("Error!")
     throw error;
   }
 
