@@ -14,7 +14,7 @@ var fs = require('fs');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 /**
@@ -26,7 +26,7 @@ var server = http.createServer(app);
 var httpsServer = https.createServer({
       key: fs.readFileSync('key.pem'),
       cert: fs.readFileSync('cert.pem'),
-    }, app).listen(3001);
+    }, app).listen(8443);
 
 /**
  * Listen on provided port, on all network interfaces.
