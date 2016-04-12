@@ -22,6 +22,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+function ensureSecure(req, res, next){
+     if(req.secure){
+       // OK, continue
+       return next();
+     };
+     res.redirect('https://' + req.hostname + req.url + ':8443'); // handle port numbers if non 443
+   };
+
+app.all('*', ensureSecure);
+
 app.use('/', routes);
 app.use('/users', users);
 
